@@ -9,9 +9,9 @@ package bl;
  *
  * @author Alex
  */
-public class Human extends Player{
-
-    public Human(String name) {
-        super(name, 60, 30, 150);
+public class Sword extends Item{
+    
+    public Sword(String typ) {
+        super(10, 0, "Sword");
     }
 }

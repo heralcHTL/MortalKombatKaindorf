@@ -9,8 +9,14 @@ package bl;
  *
  * @author Alex
  */
-public class Item {
+public abstract class Item {
     private int deltaAttack;
     private int deltaDefense;
-    private String name;
+    private String typ;
+
+    public Item(int deltaAttack, int deltaDefense, String typ) {
+        this.deltaAttack = deltaAttack;
+        this.deltaDefense = deltaDefense;
+        this.typ = typ;
+    }
 }

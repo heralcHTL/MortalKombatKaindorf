@@ -5,7 +5,12 @@
  */
 package gui;
 
+import bl.Human;
 import bl.Item;
+import bl.MKKListModel;
+import bl.MKKTableModel;
+import bl.Player;
+import bl.Sword;
 
 /**
  *
@@ -13,11 +18,20 @@ import bl.Item;
  */
 public class MKKGui extends javax.swing.JFrame {
 
+    private MKKListModel mlm = new MKKListModel();
+    private MKKTableModel mtm = new MKKTableModel();
+    private Human h = new Human("DatBoi");
+    
     /**
      * Creates new form MKKGui
      */
     public MKKGui() {
         initComponents();
+        taTable.setModel(mtm);
+        liItemList.setModel(mlm);
+        mtm.addPlayer(h);
+        h.addItem(new Sword("Longsword"));
+        mlm.setLiItem(h.getEqItems());
     }
 
     /**

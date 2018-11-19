@@ -12,10 +12,15 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Alex
  */
-public class MkkModel extends AbstractTableModel{
+public class MKKTableModel extends AbstractTableModel{
 
     private LinkedList<Player> liPlayer = new LinkedList<>();
-    private String[] colNames = {" , Name, Atk, Def, HP"};
+    private String[] colNames = {" ", "Name", "Atk", "Def", "HP"};
+    
+    public void addPlayer(Player p){
+        liPlayer.add(p);
+        this.fireTableDataChanged();
+    }
     
     @Override
     public int getRowCount() {
@@ -38,6 +43,11 @@ public class MkkModel extends AbstractTableModel{
             case 4: return p.getHp();
             default: return "???";
         }
+    }
+
+    @Override
+    public String getColumnName(int i) {
+        return colNames[i];
     }
     
 }

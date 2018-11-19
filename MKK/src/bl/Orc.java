@@ -12,6 +12,6 @@ package bl;
 public class Orc extends Player{
 
     public Orc(String name) {
-        super(name, 50, 50, 150);
+        super(name, 50, 40, 150);
     }
 }
