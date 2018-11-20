@@ -22,6 +22,11 @@ public class MKKTableModel extends AbstractTableModel{
         this.fireTableDataChanged();
     }
     
+    public Player getPlayer(int index)
+    {
+        return liPlayer.get(index);
+    }
+    
     @Override
     public int getRowCount() {
         return liPlayer.size();
@@ -35,14 +40,15 @@ public class MKKTableModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int i, int i1) {
         Player p = liPlayer.get(i);
-        switch(i1){
-            case 0: return "Type ?";
-            case 1: return p.getName();
-            case 2: return p.getAttack();
-            case 3: return p.getDefense();
-            case 4: return p.getHp();
-            default: return "???";
-        }
+        return p;
+//        switch(i1){
+//            case 0: return p.getType();
+//            case 1: return p.getName();
+//            case 2: return p.getAttack();
+//            case 3: return p.getDefense();
+//            case 4: return p.getHp();
+//            default: return "???";
+//        }
     }
 
     @Override

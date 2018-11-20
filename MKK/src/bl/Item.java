@@ -19,4 +19,17 @@ public abstract class Item {
         this.deltaDefense = deltaDefense;
         this.typ = typ;
     }
+
+    public int getDeltaAttack() {
+        return deltaAttack;
+    }
+
+    public int getDeltaDefense() {
+        return deltaDefense;
+    }
+
+    public String getTyp() {
+        return typ;
+    }
+    
 }

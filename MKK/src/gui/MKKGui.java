@@ -5,10 +5,14 @@
  */
 package gui;
 
+import bl.Axe;
 import bl.Human;
 import bl.Item;
 import bl.MKKListModel;
+import bl.MKKListRenderer;
+import bl.MKKTableCellRenderer;
 import bl.MKKTableModel;
+import bl.Orc;
 import bl.Player;
 import bl.Sword;
 
@@ -20,20 +24,32 @@ public class MKKGui extends javax.swing.JFrame {
 
     private MKKListModel mlm = new MKKListModel();
     private MKKTableModel mtm = new MKKTableModel();
+    
     private Human h = new Human("DatBoi");
+    private Orc o = new Orc("DisBoi");
     
     /**
      * Creates new form MKKGui
      */
     public MKKGui() {
         initComponents();
+        initFirstValues();
         taTable.setModel(mtm);
+        taTable.setDefaultRenderer(Object.class, new MKKTableCellRenderer());
+        
         liItemList.setModel(mlm);
-        mtm.addPlayer(h);
-        h.addItem(new Sword("Longsword"));
-        mlm.setLiItem(h.getEqItems());
+//        liItemList.setCellRenderer(new MKKListRenderer());
     }
 
+    public void initFirstValues(){
+        mtm.addPlayer(h);
+        h.addItem(new Sword("Longsword"));
+        
+        
+        mtm.addPlayer(o);
+        o.addItem(new Axe("Two-Handed Axe"));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,9 +77,17 @@ public class MKKGui extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        taTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                onUpdateThings(evt);
+            }
+        });
         jScrollPane1.setViewportView(taTable);
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(150, 100));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(150, 131));
 
         jScrollPane2.setViewportView(liItemList);
 
@@ -71,6 +95,13 @@ public class MKKGui extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void onUpdateThings(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onUpdateThings
+        // TODO add your handling code here:
+        int index = taTable.getSelectedRow();
+        Player p = mtm.getPlayer(index);
+        mlm.setLiItem(p.getEqItems());
+    }//GEN-LAST:event_onUpdateThings
 
     /**
      * @param args the command line arguments

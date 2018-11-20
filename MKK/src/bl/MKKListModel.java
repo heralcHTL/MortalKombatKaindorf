@@ -32,7 +32,7 @@ public class MKKListModel extends AbstractListModel{
 
     @Override
     public Object getElementAt(int i) {
-        return liItem.get(i);
+        return liItem.get(i).getTyp();
     }
     
 }

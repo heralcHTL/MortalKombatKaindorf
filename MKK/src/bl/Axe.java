@@ -9,9 +9,10 @@ package bl;
  *
  * @author Alex
  */
-public class Sword extends Item{
+public class Axe extends Item{
     
-    public Sword(String typ) {
-        super(15, 5, "Sword");
+    public Axe(String typ) {
+        super(20, 0, "Two-Handed Axe");
     }
+    
 }

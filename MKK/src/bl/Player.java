@@ -32,7 +32,9 @@ public abstract class Player {
     
     public void addItem(Item item)
     {
-        
+        this.attack += item.getDeltaAttack();
+        this.defense += item.getDeltaDefense();
+        this.eqItems.add(item);
     }
     
     public void removeItem(Item item)
@@ -40,6 +42,16 @@ public abstract class Player {
         
     }
 
+    public String getType() {
+        if(this instanceof Human){
+            return "Human";
+        }
+        else
+        {
+            return "Orc";
+        }
+    }
+    
     public String getName() {
         return name;
     }
