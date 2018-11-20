@@ -66,6 +66,9 @@ public class MKKGui extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(50, 50));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(453, 600));
+
         taTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
