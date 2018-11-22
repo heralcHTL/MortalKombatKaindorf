@@ -59,7 +59,7 @@ public class MKKTableCellRenderer implements TableCellRenderer{
         {
             if (i1 != 0)
             {
-                lb.setBackground(Color.green);
+                lb.setBackground(Color.green.darker());
                 lb.setForeground(Color.BLACK);
             }
             else

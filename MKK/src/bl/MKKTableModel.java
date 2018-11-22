@@ -6,6 +6,7 @@
 package bl;
 
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -20,6 +21,21 @@ public class MKKTableModel extends AbstractTableModel{
     public void addPlayer(Player p){
         liPlayer.add(p);
         this.fireTableDataChanged();
+    }
+    
+    public void challenge(int index)                //Select enemy here?
+    {
+        Player p = liPlayer.get(index);
+        Player enemy = null;
+        String enName = JOptionPane.showInputDialog("Enemy name:");
+        for (Player player : liPlayer)
+        {
+            if(player.getName().equals(enName));
+            {
+                enemy = player;
+            }
+        }
+        p.fight(enemy);
     }
     
     public Player getPlayer(int index)

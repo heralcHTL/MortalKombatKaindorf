@@ -9,7 +9,6 @@ import bl.Axe;
 import bl.Human;
 import bl.Item;
 import bl.MKKListModel;
-import bl.MKKListRenderer;
 import bl.MKKTableCellRenderer;
 import bl.MKKTableModel;
 import bl.Orc;
@@ -25,8 +24,8 @@ public class MKKGui extends javax.swing.JFrame {
     private MKKListModel mlm = new MKKListModel();
     private MKKTableModel mtm = new MKKTableModel();
     
-    private Human h = new Human("DatBoi");
-    private Orc o = new Orc("DisBoi");
+    private Human h = new Human("Human");
+    private Orc o = new Orc("Orc");
     
     /**
      * Creates new form MKKGui
@@ -48,6 +47,8 @@ public class MKKGui extends javax.swing.JFrame {
         
         mtm.addPlayer(o);
         o.addItem(new Axe("Two-Handed Axe"));
+        o.addItem(new Axe("Two-Handed Axe"));
+        o.addItem(new Axe("Two-Handed Axe"));
     }
     
     /**
@@ -59,13 +60,24 @@ public class MKKGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         taTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         liItemList = new javax.swing.JList<>();
 
+        jMenuItem1.setText("Challenge Player!");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onChallenge(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jScrollPane1.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setMinimumSize(new java.awt.Dimension(50, 50));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(453, 600));
 
@@ -80,6 +92,7 @@ public class MKKGui extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        taTable.setComponentPopupMenu(jPopupMenu1);
         taTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 onUpdateThings(evt);
@@ -105,6 +118,19 @@ public class MKKGui extends javax.swing.JFrame {
         Player p = mtm.getPlayer(index);
         mlm.setLiItem(p.getEqItems());
     }//GEN-LAST:event_onUpdateThings
+
+    private void onChallenge(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onChallenge
+        // TODO add your handling code here:
+        try
+        {
+            int index = taTable.getSelectedRow();
+        mtm.challenge(index);
+        } catch (IndexOutOfBoundsException e)
+        {
+            System.out.println("No Player selected!");
+        }
+        
+    }//GEN-LAST:event_onChallenge
 
     /**
      * @param args the command line arguments
@@ -149,6 +175,8 @@ public class MKKGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<Item> liItemList;
